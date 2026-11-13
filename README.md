@@ -82,9 +82,3 @@ numbers of the paper (wake shedding frequency, stress components, baselines).
   journal={arXiv preprint arXiv:2610.31465},
   year={2026}
 }
-
-
-## License
-
-RheOFormer builds on OFormer (Z. Li, K. Meidani, A. Barati Farimani, *Transformer for partial differential equations'
-operator learning*, TMLR 2023); the attention, encoder and decoder modules in `rheopt/models/` are taken from it.
