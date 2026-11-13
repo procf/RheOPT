@@ -1,0 +1,13 @@
+# Newtonian pretraining, flow past a triangular obstacle (wake), revin normalization, ten input frames.
+# 200 Newtonian simulations, 2000 epochs, batch 16; validation on the separate Newtonian test folder.
+geometry: wake
+normalization: revin
+time_window: 10
+wall_mask: contraction_no_step
+velocity_scaling: all
+train_path: '{data_root}/wake/Newtonian'
+valid_path: '{data_root}/wake/Newtonian_test'
+epochs: 2000
+val_every: 200
+seed: 1
+run_dir: '{runs_root}/pretrain/wake_revin'

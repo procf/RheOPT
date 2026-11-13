@@ -1,0 +1,15 @@
+# Wake behind a triangular obstacle, Oldroyd-B, revin normalization, ten input frames. N = 4, 8, 12, 16, 24, 32.
+# 2001 epochs, batch 4. wall_mask and velocity_scaling are those of the original runs (docs/PROTOCOL_NOTES.md).
+geometry: wake
+normalization: revin
+time_window: 10
+wall_mask: contraction
+velocity_scaling: non_newtonian
+train_path: '{data_root}/wake/{fluid}/finetune_N{n}'
+valid_path: '{data_root}/wake/{fluid}/validation'
+source_path: '{data_root}/wake/Newtonian'
+pretrained_path: '{runs_root}/pretrain/wake_revin/pretrained.pth'
+epochs: 2001
+val_every: 100
+fluid: Oldroyd
+run_dir: '{runs_root}/wake_revin/{fluid}/N{n}/{arm}_seed{seed}'

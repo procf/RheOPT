@@ -1,0 +1,20 @@
+# Planar contraction, RevIN, two input frames (main text). Fluids: Giesekus, Oldroyd (Oldroyd-B), Bingham; N = 4, 8, 12, 16.
+# 501 epochs, batch 4, one-cycle LR 1e-4. Fine-tuning keeps the checkpoint with the lowest validation loss,
+# checked every val_every epochs (50 for some fluids, as in the original runs).
+geometry: contraction
+normalization: revin
+time_window: 2
+wall_mask: contraction
+velocity_scaling: non_newtonian
+train_path: '{data_root}/contraction/{fluid}/finetune_N{n}'
+valid_path: '{data_root}/contraction/{fluid}/validation'
+source_path: '{data_root}/contraction/Newtonian'
+pretrained_path: '{runs_root}/pretrain/contraction_revin_2s/pretrained.pth'
+epochs: 501
+val_every: 100
+val_every_by_run:
+  Bingham: 50
+  Giesekus_N4: 50
+  Giesekus_N8: 50
+  Giesekus_N12: 50
+run_dir: '{runs_root}/contraction_revin_2s/{fluid}/N{n}/{arm}_seed{seed}'

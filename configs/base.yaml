@@ -1,0 +1,12 @@
+# Settings shared by every experiment. Arm-specific values follow the original protocol: the from-scratch arm
+# (and pretraining) used AdamW weight decay 1e-4, the fine-tuned arm 1e-6 (docs/PROTOCOL_NOTES.md).
+device: cuda:0
+num_workers: 10
+lr: 1.0e-4            # one-cycle maximum learning rate
+in_channels: 7        # vx, vy, sxy, sxx, syy, x, y
+out_channels: 5       # vx, vy, sxy, sxx, syy
+save_predictions: true
+arms:
+  pretrain: {batch_size: 16, valid_batch_size: 8, weight_decay: 1.0e-4}
+  scratch:  {batch_size: 4,  valid_batch_size: 8, weight_decay: 1.0e-4}
+  finetune: {batch_size: 4,  valid_batch_size: 4, weight_decay: 1.0e-6}
